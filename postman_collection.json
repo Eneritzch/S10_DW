@@ -1,0 +1,55 @@
+{
+  "info": {
+    "name": "Taller Mongo + Node",
+    "description": "Colección para probar la API de estudiantes. Importar en Postman.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    { "key": "base_url", "value": "http://localhost:3000" },
+    { "key": "id", "value": "" }
+  ],
+  "item": [
+    {
+      "name": "1. Crear estudiante (POST)",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "url": { "raw": "{{base_url}}/api/estudiantes", "host": ["{{base_url}}"], "path": ["api", "estudiantes"] },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"nombre\": \"Ana Perez\",\n  \"correo\": \"ana@uni.edu\",\n  \"edad\": 20,\n  \"carrera\": \"Sistemas\"\n}"
+        }
+      }
+    },
+    {
+      "name": "2. Listar todos (GET)",
+      "request": {
+        "method": "GET",
+        "url": { "raw": "{{base_url}}/api/estudiantes", "host": ["{{base_url}}"], "path": ["api", "estudiantes"] }
+      }
+    },
+    {
+      "name": "3. Obtener uno por ID (GET)",
+      "request": {
+        "method": "GET",
+        "url": { "raw": "{{base_url}}/api/estudiantes/{{id}}", "host": ["{{base_url}}"], "path": ["api", "estudiantes", "{{id}}"] }
+      }
+    },
+    {
+      "name": "4. Actualizar (PUT)",
+      "request": {
+        "method": "PUT",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "url": { "raw": "{{base_url}}/api/estudiantes/{{id}}", "host": ["{{base_url}}"], "path": ["api", "estudiantes", "{{id}}"] },
+        "body": { "mode": "raw", "raw": "{\n  \"edad\": 21,\n  \"carrera\": \"Software\"\n}" }
+      }
+    },
+    {
+      "name": "5. Eliminar (DELETE)",
+      "request": {
+        "method": "DELETE",
+        "url": { "raw": "{{base_url}}/api/estudiantes/{{id}}", "host": ["{{base_url}}"], "path": ["api", "estudiantes", "{{id}}"] }
+      }
+    }
+  ]
+}
